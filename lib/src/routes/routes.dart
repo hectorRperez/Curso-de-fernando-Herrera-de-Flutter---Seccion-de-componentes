@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/animated_container.dart';
 import 'package:flutter/material.dart';
 
 
@@ -9,9 +10,10 @@ import 'package:componentes/src/pages/home_page.dart';
 
 Map <String, WidgetBuilder> getApplicationRoutes(){
   return <String,WidgetBuilder>{
-        '/'     : (BuildContext context) => HomePage(),
-        'alert' : (BuildContext context) => AlertPage(),
-        'card'  : (BuildContext context) => CardPage(),
-        "avatar": (BuildContext context) => AvatarPage(),
+        '/'                 : (BuildContext context) => HomePage(),
+        'alert'             : (BuildContext context) => AlertPage(),
+        'card'              : (BuildContext context) => CardPage(),
+        "avatar"            : (BuildContext context) => AvatarPage(),
+        'animatedContainer' : (BuildContext context) => AnimatedContainerPage(),
   };
 }
