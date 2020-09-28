@@ -1,3 +1,4 @@
+import 'package:componentes/src/utils/icon_string_util.dart';
 import 'package:flutter/material.dart';
 
 //Mis dependencias
@@ -20,7 +21,8 @@ class HomePage extends StatelessWidget {
       initialData: [],
       builder: (BuildContext context, AsyncSnapshot <List<dynamic>>snapshot) {
       
-        return ListView(  
+        return ListView(
+          padding: EdgeInsets.all(12),  
           children: listaItems(snapshot.data),
         );
       },
@@ -33,11 +35,12 @@ class HomePage extends StatelessWidget {
     data.forEach((element) { 
       final widgetTemp = ListTile(
         title: Text(element['texto']),
-        leading: Icon(Icons.accessibility_new),
+        leading: getIcon(element['icon']),
+        trailing: Icon(Icons.keyboard_arrow_right),
       );
 
       opciones.add(widgetTemp);
-
+      opciones.add(Divider());
     });
 
     return opciones;
