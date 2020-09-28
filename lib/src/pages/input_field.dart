@@ -6,10 +6,14 @@ class InputFieldPage extends StatefulWidget {
 }
 
 class _InputFieldPageState extends State<InputFieldPage> {
+  
+  List <String> _poderes = ['Volar', 'Super fuerza','super velocidad'];
+  
   String _nombre = '';
   String _mail = ' ';
 
   TextEditingController inputDateController = new TextEditingController();
+  String _opcionSeleccionada = 'Volar';  
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +31,8 @@ class _InputFieldPageState extends State<InputFieldPage> {
           _mostrarPassword(),
           SizedBox(height: 25,),
           _mostrarNacimiento(),
+          SizedBox(height: 25,),
+          _mostrarPoderes(),
           SizedBox(height: 40,),
           Divider(),
           _mostrarDatos(),
@@ -130,6 +136,41 @@ class _InputFieldPageState extends State<InputFieldPage> {
       final fecha = datePicker.toString();
       inputDateController.text = fecha;
     }
+  }
+
+  List <DropdownMenuItem<String>> getOpcionesDropDown(){
+    List <DropdownMenuItem<String>> _lista = [];
+
+    _poderes.forEach((element) {
+      _lista.add(
+        DropdownMenuItem(
+          child: Text(element),
+          value: element,
+        ),
+      );
+    });
+
+    return _lista;
+  }
+
+  Widget _mostrarPoderes() {
+    return Container(
+      child: Row(
+        children: [
+          Icon(Icons.perm_identity),
+          Expanded(child: SizedBox(width: 10,)),
+          DropdownButton(
+            items: getOpcionesDropDown(),
+            value: _opcionSeleccionada,
+            onChanged: (value){
+              setState(() {
+                _opcionSeleccionada = value;
+              });
+            },
+          ),
+        ],
+      ),
+    );
   }
 
 
