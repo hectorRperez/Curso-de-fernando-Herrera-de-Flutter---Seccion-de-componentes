@@ -8,12 +8,24 @@ class CardPage extends StatelessWidget {
         title: Text('Card Page'),
       ),
       body: ListView(
-        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-        children: [
-          _itemCard(),
-          _itemCard(),
-        ]
-      ),
+          padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+          children: [
+            _itemCard(),
+            SizedBox(
+              height: 15,
+            ),
+            _itemCard(),
+            SizedBox(
+              height: 15,
+            ),
+            _itemCard2(),
+            SizedBox(
+              height: 15,
+            ),
+            _itemCard2(),
+            _itemCard(),
+
+          ]),
     );
   }
 
@@ -42,7 +54,9 @@ class CardPage extends StatelessWidget {
                   onPressed: () {},
                   child: Text('Cancelar'),
                 ),
-                SizedBox(width: 20,),
+                SizedBox(
+                  width: 20,
+                ),
                 FlatButton(
                   onPressed: () {},
                   child: Text('Ok'),
@@ -51,6 +65,44 @@ class CardPage extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _itemCard2() {
+    final container = Container(
+      color: Colors.blue,
+      child: Column(
+        children: [
+          FadeInImage(
+            image: NetworkImage(
+                'https://i.pinimg.com/originals/25/79/11/257911f2e20a88f67c73e1054316acac.jpg'),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fadeInDuration: Duration(milliseconds: 200),
+            fit: BoxFit.cover,
+          ),
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Text('Lago el gato',style: TextStyle(fontSize: 18),),
+          ),
+        ],
+      ),
+    );
+
+    return Container(
+      child: ClipRRect(
+        child: container,
+        borderRadius: BorderRadius.circular(20),
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black38,
+            blurRadius: 7,
+            offset: Offset(5, 5)
+          ),
+        ]
       ),
     );
   }
