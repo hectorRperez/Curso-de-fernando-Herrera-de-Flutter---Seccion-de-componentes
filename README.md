@@ -7,3 +7,5 @@
 ### Capitulo 068 Utilidades - Obtener icono por String
 
 ### Capitulo 071 Navegar con rutas con nombre
+
+### 072 Crear un Card Widget
