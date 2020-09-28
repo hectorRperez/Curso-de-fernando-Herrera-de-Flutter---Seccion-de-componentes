@@ -11,3 +11,5 @@
 ### 072 Crear un Card Widget
 
 ### 076 Crear un Widget Alert
+
+### 077 Widget Circle Avatar
