@@ -1,3 +1,4 @@
+import 'package:componentes/src/pages/slider_page.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,6 +17,7 @@ Map <String, WidgetBuilder> getApplicationRoutes(){
         'card'              : (BuildContext context) => CardPage(),
         "avatar"            : (BuildContext context) => AvatarPage(),
         'animatedContainer' : (BuildContext context) => AnimatedContainerPage(),
-        'inputs'            : (BuildContext context) => InputFieldPage()
+        'inputs'            : (BuildContext context) => InputFieldPage(),
+        'slider'            : (BuildContext context) => SliderPage(),
   };
 }
