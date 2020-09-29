@@ -53,20 +53,41 @@ class _ListaScrollPageState extends State<ListaScrollPage> {
   }
 
   Widget _crearLista() {
-    return ListView.builder(
-      controller: _scrollController,
-      itemCount: _listaNumero.length,
-      itemBuilder: (BuildContext context, int index) {
-        return FadeInImage(
-          image: NetworkImage('https://picsum.photos/id/$index/500/300'),
-          placeholder: AssetImage('assets/jar-loading.gif'),
-          fit: BoxFit.cover,
-          fadeInDuration: Duration(seconds: 2),
-          height: 300,
-          width: 500,
-        );
-      },
+    return RefreshIndicator(
+      //Crear un Pull refres. Los pull refres solo se integran con un elemento que tenga un
+      //Scroll 
+      // la propiedad onRefresh
+      // Recibe un Future -->
+      onRefresh: obtenerPagina1,
+      child: ListView.builder(
+        controller: _scrollController,
+        itemCount: _listaNumero.length,
+        itemBuilder: (BuildContext context, int index) {
+          //Necesitamos un valor entero para poder trabjar con la API
+          final imagen = _listaNumero[index];
+          return FadeInImage(
+            image: NetworkImage('https://picsum.photos/id/$imagen/500/300'),
+            placeholder: AssetImage('assets/jar-loading.gif'),
+            fit: BoxFit.cover,
+            fadeInDuration: Duration(seconds: 2),
+            height: 300,
+            width: 500,
+          );
+        },
+      ),
     );
+  }
+
+//Metodo completo para crear un Pull Refres
+  Future <Null> obtenerPagina1() async{
+    final duration = new Duration(seconds: 10);
+    new Timer(duration, (){
+      _listaNumero.clear();
+      _contador++;
+      _cargar10();
+    });
+
+    return Future.delayed(duration);
   }
 
 //Este metodo se encarga de cargar 10 imagenes más
